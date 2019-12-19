@@ -1,0 +1,20 @@
+.socials
+  margin: 0
+  padding: 0
+  list-style: none
+  display: flex
+  align-items: center
+  &__item
+    margin-right: 1rem
+    line-height: 1
+    &:last-child
+      margin-right: 0
+    &:hover
+      .socials
+        &__icon
+          fill: $orange
+  &__icon
+    width: 1.8rem
+    height: 1.8rem
+    fill: $gray
+    +trans

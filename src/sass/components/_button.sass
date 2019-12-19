@@ -1,0 +1,46 @@
+.btn
+  display: inline-block
+  vertical-align: middle
+  padding: 1.3rem 2rem 1.2rem
+  font-family: $main-font
+  font-size: 0.9rem
+  font-weight: 700
+  color: #fff
+  text-align: center
+  letter-spacing: 0.3em
+  line-height: 1
+  background-color: $orange
+  border: 0
+  border-radius: 0.7rem
+  outline: none
+  text-decoration: none
+  cursor: pointer
+  user-select: none
+  text-transform: uppercase
+  +trans
+  &:hover
+    background-color: lighten($orange, 8%)
+    color: #fff
+    box-shadow: 0 0 1rem rgba($orange, 0.2)
+  &:focus
+    background-color: darken($orange, 5%)
+    color: #fff
+    outline: none
+    box-shadow: 0 0 1rem rgba($orange, 0.2)
+  &[disabled]
+    background-color: #e5e5e5
+    cursor: not-allowed
+    color: #fff
+    box-shadow: none
+  &--transparent
+    padding-top: 1.2rem
+    padding-bottom: 1.1rem
+    background: none
+    color: $main-color
+    border: 0.1rem solid $accent
+    &:hover
+      background-color: $accent
+      box-shadow: 0 0 1rem rgba($accent, 0.2)
+    &:focus
+      background-color: darken($accent, 5%)
+      box-shadow: 0 0 1rem rgba($accent, 0.2)

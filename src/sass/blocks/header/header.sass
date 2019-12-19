@@ -1,0 +1,46 @@
+.header
+  padding: 1rem 0
+  +trans(top)
+  &.fixed
+    position: fixed
+    top: 0
+    left: 0
+    right: 0
+    z-index: 10
+    background-color: #fff
+    box-shadow: 0 0 1rem rgba(#000, 0.1)
+    .header
+      &__logo
+        max-width: 13rem
+        +xs-block
+          max-width: 10rem
+  &.nav-up
+    top: -9rem
+  &.nav-down
+    top: 0
+  .container
+    position: relative
+    display: flex
+    align-items: center
+  &__logo
+    margin-right: 7rem
+    +lg-block
+      margin-right: 3rem
+    +xs-block
+      max-width: 10rem
+  &__nav
+    flex-grow: 1
+  &__socials
+    margin: 0 3rem
+    +lg-block
+      display: none
+  &__btns
+    display: flex
+    align-items: center
+    +lg-block
+      margin-left: auto
+      margin-right: 5rem
+    +sm-block
+      display: none
+    & > *:not(:last-child)
+      margin-right: 1.5rem
