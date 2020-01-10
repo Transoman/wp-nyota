@@ -1,0 +1,71 @@
+.blog
+  .section-head
+    margin-bottom: 6rem
+    .subscribe
+      margin-top: 1rem
+  &__left
+    +col
+    +size(8)
+    +size-md(7)
+    +size-sm(12)
+  &__right
+    +col
+    +size(4)
+    +size-md(5)
+    +size-sm(12)
+    padding-left: 7rem
+    +lg-block
+      padding: 0
+    +sm-block
+      display: none
+
+.blog-list
+  &__item
+    +col
+    +size(6)
+    +size-md(12)
+    display: flex
+    flex-direction: column
+    margin-bottom: 4rem
+  &__img
+    display: block
+    margin-bottom: 2rem
+    img
+      width: 100%
+      border-radius: 1rem
+  &__body
+    margin-bottom: 2rem
+    padding: 0 2rem
+    p
+      font-size: 1.2rem
+  &__title
+    position: relative
+    margin-bottom: 0.5rem
+    padding-top: 1rem
+    font-weight: 700
+    line-height: 1.5
+    &::before
+      content: ''
+      position: absolute
+      top: 0
+      left: -2rem
+      width: 1px
+      height: 4rem
+      background-color: $orange
+    a
+      color: inherit
+      &:hover, &:focus
+        color: lighten($accent, 5%)
+  &__publish
+    display: block
+    font-size: 1rem
+    color: #979797
+  &__bottom
+    margin-top: auto
+    padding: 0 2rem
+    .btn
+      width: 100%
+      max-width: 15rem
+  &__btn
+    +col
+    +size(12)

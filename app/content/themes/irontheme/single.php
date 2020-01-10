@@ -11,22 +11,34 @@ get_header();
 ?>
 
   <div id="primary" class="content-area">
-    <main id="main" class="site-main">
+    <main id="main" class="site-main article">
 
     <?php
     while ( have_posts() ) :
-      the_post();
+      the_post(); ?>
 
-      get_template_part( 'template-parts/content', get_post_type() );
+    <div class="article__container">
 
-      the_post_navigation();
+	    <?php get_template_part( 'template-parts/breadcrumbs' ); ?>
 
-      // If comments are open or we have at least one comment, load up the comment template.
-      if ( comments_open() || get_comments_number() ) :
-        comments_template();
-      endif;
+      <div class="article__img">
+        <?php the_post_thumbnail('full'); ?>
+      </div>
 
-    endwhile; // End of the loop.
+      <div class="article__head">
+        <h1 class="article__title"><?php the_title(); ?></h1>
+        <time class="article__publish" datetime="<?php echo get_the_date( 'Y-m-d' ); ?>"><?php echo get_the_date(); ?></time>
+      </div>
+
+      <div class="article__body">
+        <?php the_content(); ?>
+      </div>
+
+	    <?php get_template_part( 'template-parts/subscribe' ); ?>
+
+    </div>
+
+    <?php endwhile; // End of the loop.
     ?>
 
     </main><!-- #main -->

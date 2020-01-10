@@ -74,6 +74,12 @@ if ( ! function_exists( 'ith_setup' ) ) :
       'image',
       'video'
     ) );
+
+    /**
+     * Add image size
+     */
+    add_image_size( 'donation', 500, 348, true );
+    add_image_size( 'blog', 500, 284, true );
   }
 endif;
 add_action( 'after_setup_theme', 'ith_setup' );
@@ -172,3 +178,11 @@ function get_any_post($post_type, $count = null, $tax_name = null, $tax_id = nul
 	$query = new WP_Query( $args );
 	return $query;
 }
+
+add_filter( 'excerpt_length', function(){
+	return 15;
+} );
+
+add_filter('excerpt_more', function($more) {
+	return '';
+});

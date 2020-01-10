@@ -14,7 +14,7 @@ if ( have_rows('story_layout') ):
 
       <section class="our-story-1">
         <div class="container">
-          <div class="section-head">
+          <div class="section-head text-center">
             <?php $title = get_sub_field( 'title' );
             $descr = get_sub_field( 'description' );
             if ($title): ?>
@@ -53,7 +53,7 @@ if ( have_rows('story_layout') ):
           <?php $title = get_sub_field( 'title' );
           $descr = get_sub_field( 'text' );
           if ($title): ?>
-            <h2 class="section-title"><?php echo $title; ?></h2>
+            <h2 class="section-title text-center"><?php echo $title; ?></h2>
           <?php endif; ?>
 
           <?php if (have_rows( 'list' )): ?>

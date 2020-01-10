@@ -14,7 +14,9 @@
     "wpackagist-plugin/force-regenerate-thumbnails": "*",
     "wpackagist-plugin/wordpress-seo": "*",
     "wpackagist-plugin/contact-form-7": "*",
-    "wpackagist-plugin/country-phone-field-contact-form-7": "*"
+    "wpackagist-plugin/country-phone-field-contact-form-7": "*",
+    "wpackagist-plugin/contact-form-cfdb7": "*",
+    "wpackagist-plugin/wp-paypal": "*"
   },
   "extra": {
     "wordpress-install-dir": "app/wp",

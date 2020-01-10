@@ -1,0 +1,44 @@
+.donation
+  padding-top: 7rem
+  padding-bottom: 5rem
+  background-color: #F9F9F9
+  .section-head
+    margin-bottom: 3rem
+
+.donation-list
+  &__item
+    +col
+    +size(3)
+    +size-md(6)
+    +size-sm(12)
+    display: flex
+    flex-direction: column
+    margin-bottom: 3rem
+    padding: 2rem 2rem 4rem
+    background-color: #fff
+    border-radius: 1rem
+    text-align: center
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1)
+  &__img
+    margin-bottom: 2rem
+    img
+      width: 100%
+      border-radius: 1rem
+  &__body
+    margin-bottom: 1.5rem
+  &__title
+    margin-bottom: 1rem
+  &__descr
+    margin: 0
+    font-size: 1.2rem
+  &__bottom
+    margin-top: auto
+    .btn
+      width: 100%
+      max-width: 16.5rem
+  &__price
+    margin-bottom: 1.5rem
+    font-size: 2rem
+    font-weight: 500
+    color: $accent
+    line-height: 1

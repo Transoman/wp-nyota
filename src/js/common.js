@@ -3,7 +3,8 @@
 global.jQuery = require('jquery');
 let svg4everybody = require('svg4everybody'),
   popup = require('jquery-popup-overlay'),
-  Rellax = require('rellax');
+  Rellax = require('rellax'),
+  Swiper = require('swiper');
 
 jQuery(document).ready(function($) {
   // Toggle nav menu
@@ -171,6 +172,43 @@ jQuery(document).ready(function($) {
 
     lastScrollTop = st;
   }
+
+  new Swiper('.give-slider', {
+    spaceBetween: 60,
+    pagination: {
+      el: '.swiper-pagination',
+      type: 'bullets',
+      clickable: true
+    },
+  });
+
+  $('body').on('click', '.load-more', function(e) {
+    e.preventDefault();
+
+    let btnText = $(this).text();
+    $(this).text('Loading...');
+
+    let data = {
+      'action': 'load_more_post',
+      'query': true_posts,
+      'page' : current_page
+    };
+    $.ajax({
+      url: window.wp_data.ajax_url,
+      data: data,
+      type: 'POST',
+      success: function(data) {
+        if ( data ) {
+          $('.load-more').text(btnText);
+          $('#response').append(data);
+          current_page++;
+          if (current_page == max_pages) $('.load-more').parent().remove();
+        } else {
+          $('.load-news').parent().remove();
+        }
+      }
+    });
+  });
 
   fixedHeader($(this));
   toggleNav();

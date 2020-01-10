@@ -1,0 +1,28 @@
+.last-post
+  &__item
+    margin-bottom: 2rem
+    padding: 0 2rem
+    &:last-child
+      margin-bottom: 0
+    p
+      font-size: 1.2rem
+      &:last-of-type
+        margin-bottom: 0
+    .btn
+      margin-top: 2rem
+  &__title
+    position: relative
+    margin-bottom: 1.5rem
+    padding-top: 2.5rem
+    &::before
+      content: ''
+      position: absolute
+      top: 0
+      left: -2rem
+      width: 1px
+      height: 4rem
+      background-color: $orange
+    a
+      color: $main-color
+      &:hover, &:focus
+        color: $accent

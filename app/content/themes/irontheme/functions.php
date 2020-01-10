@@ -43,3 +43,8 @@ if ( class_exists( 'acf' ) ) {
 
 	require get_template_directory() . '/inc/acf.php';
 }
+
+/**
+ * Ajax
+ */
+require get_template_directory() . '/inc/ajax.php';
