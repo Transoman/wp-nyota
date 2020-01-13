@@ -49,29 +49,31 @@
     </div>
   </div>
 
-  <div class="modal" id="donation-contact-modal">
-    <button class="donation-contact-modal_close modal__close"></button>
+  <?php if (get_field( 'donate_form', 'option' )): ?>
+    <div class="modal" id="donation-contact-modal">
+      <button class="donation-contact-modal_close modal__close"></button>
 
-    <h3 class="modal__title">Contact Information</h3>
+      <h3 class="modal__title">Contact Information</h3>
 
-	  <?php echo do_shortcode( '[contact-form-7 id="129" title="Donations"]' ); ?>
+      <?php echo do_shortcode( get_field( 'donate_form', 'option' ) ); ?>
 
-    <script>
-      jQuery(document).ready(function($) {
-        var id;
+      <script>
+        jQuery(document).ready(function($) {
+          var id;
 
-        $('.donation-contact-modal_open').click(function() {
-          id = $(this).data('modal-id');
+          $('.donation-contact-modal_open').click(function() {
+            id = $(this).data('modal-id');
+          });
+
+          $('.wpcf7[id*="wpcf7-f129"]').on('wpcf7:mailsent', function() {
+            var modal = $('.modal');
+            modal.popup("hide");
+            $("#" + id).popup("show");
+          });
         });
-
-        $('.wpcf7[id*="wpcf7-f129"]').on('wpcf7:mailsent', function() {
-          var modal = $('.modal');
-          modal.popup("hide");
-          $("#" + id).popup("show");
-        });
-      });
-    </script>
-  </div>
+      </script>
+    </div>
+  <?php endif; ?>
 
   <div class="modal" id="thank-donation-modal">
     <button class="thank-donation-modal_close modal__close"></button>
