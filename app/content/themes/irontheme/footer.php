@@ -65,7 +65,9 @@
             id = $(this).data('modal-id');
           });
 
-          $('.wpcf7[id*="wpcf7-f129"]').on('wpcf7:mailsent', function() {
+          var formId = $('#donation-contact-modal input[name="_wpcf7"]').val();
+
+          $('.wpcf7[id*="wpcf7-f' + formId + '"]').on('wpcf7:mailsent', function() {
             var modal = $('.modal');
             modal.popup("hide");
             $("#" + id).popup("show");
