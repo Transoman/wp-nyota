@@ -1,6 +1,5 @@
 'use strict';
 
-global.jQuery = require('jquery');
 let svg4everybody = require('svg4everybody'),
   popup = require('jquery-popup-overlay'),
   Rellax = require('rellax'),

@@ -49,36 +49,34 @@
     </div>
   </div>
 
-  <!--<div class="modal" id="donation-modal">
-    <button class="donation-modal_close modal__close"></button>
+  <div class="modal" id="donation-contact-modal">
+    <button class="donation-contact-modal_close modal__close"></button>
 
-    <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" target="_top">
-      <input type="hidden" name="cmd" value="_s-xclick" />
-      <input type="hidden" name="hosted_button_id" value="M5SY8DFQE9JGN" />
-      <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
-      <img alt="" border="0" src="https://www.sandbox.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1" />
-    </form>
+    <h3 class="modal__title">Contact Information</h3>
 
+	  <?php echo do_shortcode( '[contact-form-7 id="129" title="Donations"]' ); ?>
 
-    <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
-      <input type="hidden" name="business"
-             value="sb-gploy859293@business.example.com">
+    <script>
+      jQuery(document).ready(function($) {
+        var id;
 
-      <input type="hidden" name="cmd" value="_xclick">
+        $('.donation-contact-modal_open').click(function() {
+          id = $(this).data('modal-id');
+        });
 
-      <input type="hidden" name="item_name" value="Friends of the Park">
-      <input type="hidden" name="item_number" value="Fall Cleanup Campaign">
-      <input type="hidden" name="amount" value="1.00">
-      <input type="hidden" name="currency_code" value="USD">
-      <input type="hidden" name="callback_url" value="http://nyota.loc/give-a-campaign/">
+        $('.wpcf7[id*="wpcf7-f129"]').on('wpcf7:mailsent', function() {
+          var modal = $('.modal');
+          modal.popup("hide");
+          $("#" + id).popup("show");
+        });
+      });
+    </script>
+  </div>
 
-      <input type="image" name="submit"
-             src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif"
-             alt="Donate">
-      <img alt="" width="1" height="1"
-           src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" >
-    </form>
-  </div>-->
+  <div class="modal" id="thank-donation-modal">
+    <button class="thank-donation-modal_close modal__close"></button>
+    <h3 class="modal__title">Thank you for the donation!</h3>
+  </div>
 
 <?php wp_footer(); ?>
 

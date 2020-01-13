@@ -69,7 +69,6 @@ if ( have_rows('give_layout') ):
 				</div>
 			</section>
 
-
 		<?php elseif ( get_row_layout() == 'donation' ): ?>
 
       <section class="donation">
@@ -104,13 +103,17 @@ if ( have_rows('give_layout') ):
                   </div>
                   <div class="donation-list__bottom">
                     <p class="donation-list__price">$ <?php the_sub_field( 'price' ); ?></p>
-                    <a href="#" class="btn donation-modal-<?php echo $i; ?>_open">Make a gift</a>
+                    <a href="#" class="btn donation-contact-modal_open" data-modal-id="donation-modal-<?php echo $i; ?>">Make a gift</a>
                   </div>
 
-                  <div class="modal" id="donation-modal-<?php echo $i; ?>">
+                  <div class="modal modal-donation" id="donation-modal-<?php echo $i; ?>">
                     <button class="donation-modal-<?php echo $i; ?>_close modal__close"></button>
 
-                    <?php echo do_shortcode( '[wp_paypal button="buynow" name="'. get_sub_field( 'title' ) .'" amount="'. get_sub_field( 'price' ) .'" return="'. home_url( '/' ) .'" no_shipping="1"]' ); ?>
+                    <h3 class="modal__title">Donation</h3>
+
+                    <div class="modal__content">
+                      <?php echo do_shortcode( '[wp_paypal button="buynow" name="'. get_sub_field( 'title' ) .'" amount="'. get_sub_field( 'price' ) .'" return="'. home_url( '/' ) .'give-a-campaign/?success=1" no_shipping="1"]' ); ?>
+                    </div>
                   </div>
 
                 </div>
@@ -125,5 +128,21 @@ if ( have_rows('give_layout') ):
 
 	endwhile;
 endif; ?>
+
+<?php
+if (!empty($_GET['success']) && $_GET['success'] == '1') {
+
+	add_action( 'wp_footer', 'hook_javascript', 99 );
+	function hook_javascript() {
+		?>
+    <script>
+      jQuery(document).ready(function($) {
+        $("#thank-donation-modal").popup("show");
+      });
+    </script>
+		<?php
+	}
+}
+?>
 
 <?php get_footer();

@@ -123,6 +123,10 @@ add_action( 'widgets_init', 'ith_widgets_init' );
 function ith_scripts() {
   wp_enqueue_style( 'ith-style', get_stylesheet_uri() );
 
+	wp_deregister_script( 'jquery' );
+	wp_register_script( 'jquery', get_template_directory_uri() . '/js/jquery.min.js', false, null );
+	wp_enqueue_script( 'jquery' );
+
   wp_enqueue_script( 'ith-main', get_template_directory_uri() . '/js/common.js', array(), '', true);
 
   if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
