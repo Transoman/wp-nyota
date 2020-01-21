@@ -40,9 +40,20 @@
 
 .give-slider
   margin: -20px
-  padding: 20px 20px 50px
+  padding: 20px 30px 50px
   &__item
     .video
       box-shadow: 0 1rem 2rem 0 rgba(0,0,0,.5)
   .swiper-pagination
     bottom: 5px
+  .swiper-button-prev,
+  .swiper-button-next
+    color: $accent
+  .swiper-button-prev
+    left: 0
+    +sm-block
+      left: 1rem
+  .swiper-button-next
+    right: 0
+    +sm-block
+      right: 1rem

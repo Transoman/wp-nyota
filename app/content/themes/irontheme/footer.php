@@ -59,10 +59,28 @@
 
       <script>
         jQuery(document).ready(function($) {
-          var id;
+          var id,
+          productName = '',
+          price = 0,
+          qty = 0,
+          total = 0;
 
           $('.donation-contact-modal_open').click(function() {
             id = $(this).data('modal-id');
+            productName = $(this).parents('.donation-list__item').find('.donation-list__title').text();
+            price = $(this).data('donat-price');
+            qty = $('#donation-contact-modal input[name="your-quantity"]').val();
+            total = qty * parseInt(price);
+
+            $('#donation-contact-modal input[name="your-item"]').val(productName);
+            $('#donation-contact-modal input[name="your-sum"]').val('$ ' + total);
+          });
+
+          $('#donation-contact-modal input[name="your-quantity"]').change(function() {
+            qty = $(this).val();
+            total = qty * price;
+
+            $('#donation-contact-modal input[name="your-sum"]').val('$ ' + total);
           });
 
           var formId = $('#donation-contact-modal input[name="_wpcf7"]').val();
@@ -70,6 +88,9 @@
           $('.wpcf7[id*="wpcf7-f' + formId + '"]').on('wpcf7:mailsent', function() {
             var modal = $('.modal');
             modal.popup("hide");
+
+            $("#" + id).find('input[name="amount"]').val(total);
+
             $("#" + id).popup("show");
           });
         });

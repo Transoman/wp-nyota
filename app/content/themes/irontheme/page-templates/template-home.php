@@ -41,12 +41,14 @@ if ( have_rows('home_layout') ):
         <div class="container">
           <div class="s-video__wrap">
             <img src="<?php echo THEME_URL; ?>/images/general/lining.png" class="parallax parallax-2" alt="" data-rellax-speed="1" data-rellax-percentage="0.5">
-            <div class="video">
-              <a href="<?php echo esc_url(get_sub_field('video_link')); ?>" class="video__link">
-                <?php echo wp_get_attachment_image( get_sub_field( 'video_poster' ), 'full', '', array('class' => 'video__media') ); ?>
-              </a>
-              <button type="button" aria-label="Play Video" class="video__button"></button>
-            </div>
+	          <?php
+              if (get_sub_field('video_link')): ?>
+              <div class="video">
+                <?php  global $wp_embed;
+                  echo $wp_embed->autoembed( esc_url( get_sub_field( 'video_link' ) ) );
+                ?>
+              </div>
+            <?php endif; ?>
           </div>
         </div>
       </section>

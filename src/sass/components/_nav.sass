@@ -80,6 +80,12 @@
     margin-right: 2.5rem
     &:last-child
       margin-right: 0
+    &.accent
+      a
+        color: $accent
+        font-weight: 500
+        &:hover, &:focus
+          color: lighten($accent, 5%)
   a
     font-size: 1.2rem
     text-transform: uppercase

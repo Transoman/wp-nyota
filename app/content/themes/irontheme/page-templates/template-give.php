@@ -50,17 +50,21 @@ if ( have_rows('give_layout') ):
 									<div class="swiper-wrapper">
 										<?php while (have_rows( 'slider' )): the_row(); ?>
 										<div class="give-slider__item swiper-slide">
-											<div class="video">
-												<a href="<?php echo esc_url(get_sub_field('video_link')); ?>" class="video__link">
-													<?php echo wp_get_attachment_image( get_sub_field( 'video_poster' ), 'full', '', array('class' => 'video__media') ); ?>
-												</a>
-												<button type="button" aria-label="Play Video" class="video__button"></button>
-											</div>
+											<?php
+											if (get_sub_field('video_link')): ?>
+                        <div class="video">
+													<?php  global $wp_embed;
+													echo $wp_embed->autoembed( esc_url( get_sub_field( 'video_link' ) ) );
+													?>
+                        </div>
+											<?php endif; ?>
 										</div>
 										<?php endwhile; ?>
 									</div>
                   <div class="swiper-pagination"></div>
-								</div>
+                  <div class="swiper-button-prev"></div>
+                  <div class="swiper-button-next"></div>
+                </div>
 							<?php endif; ?>
 						</div>
 						<!-- /.give__right -->
@@ -103,7 +107,7 @@ if ( have_rows('give_layout') ):
                   </div>
                   <div class="donation-list__bottom">
                     <p class="donation-list__price">$ <?php the_sub_field( 'price' ); ?></p>
-                    <a href="#" class="btn donation-contact-modal_open" data-modal-id="donation-modal-<?php echo $i; ?>">Make a gift</a>
+                    <a href="#" class="btn donation-contact-modal_open" data-modal-id="donation-modal-<?php echo $i; ?>" data-donat-price="<?php the_sub_field( 'price' ); ?>">Make a gift</a>
                   </div>
 
                   <div class="modal modal-donation" id="donation-modal-<?php echo $i; ?>">
